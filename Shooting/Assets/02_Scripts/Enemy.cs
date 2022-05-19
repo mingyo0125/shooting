@@ -32,12 +32,22 @@ public class Enemy : MonoBehaviour
     public void OnCollisionEnter(Collision collision)
     {
 
-            gameObject.SetActive(false);
-            collision.gameObject.SetActive(false);
+            if(collision.gameObject.CompareTag("Bullet2"))
+            {
+                gameObject.SetActive(false);
+            }
+            
+            if(collision.gameObject.CompareTag("Bullet"))
+            {
+                gameObject.SetActive(false);
+                collision.gameObject.SetActive(false);
+            }
 
         if(collision.gameObject.CompareTag("Player"))
         {
             Invoke("gameover",0.7f);
+            gameObject.SetActive(false);
+            collision.gameObject.SetActive(false);
         }
         }
     public void gameover()

@@ -14,6 +14,8 @@ public class Boss : MonoBehaviour
     public float deltaTime = 2f;
     public Slider slider;
     public float damage;
+
+    public float damage2;
     public GameObject explosionFactory;
 
     SpriteRenderer spriteRenderer;
@@ -92,6 +94,15 @@ public class Boss : MonoBehaviour
                 OnHit(bullet.dmg);
                 slider.value -= damage;
             }
+            else if (other.gameObject.CompareTag("Bullet2"))
+            {
+                Destroy(other.gameObject);
+                Bullet2 bullet2 = other.gameObject.GetComponent<Bullet2>();
+                OnHit(bullet2.dmg);
+                slider.value -= damage2;
+            }
+
+
             if (other.gameObject.CompareTag("Player"))
         {
             other.gameObject.SetActive(false);
